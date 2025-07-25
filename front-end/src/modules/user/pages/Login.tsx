@@ -15,7 +15,7 @@ const Login = ()=>{
                 <Input type="email" id="email" placeholder="Email" />
                 <Label htmlFor="password">Password</Label>
                 <Input type="password" id="password" placeholder="Password" />
-                <Button>Login</Button>
+                <Button className="bg-blue-600 hover:bg-blue-800 hover:text-2xl">Login</Button>
                 </div>
         </CardContent>
     </Card>)

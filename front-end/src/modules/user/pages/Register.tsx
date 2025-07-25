@@ -13,6 +13,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../validations/register-validation";
 import { doRegister } from "../api/user-api";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Angry } from 'lucide-react';
  
 const Register = () => {
 	const navigate = useNavigate();
@@ -54,6 +56,15 @@ const Register = () => {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
+        <div>
+          <Alert variant="destructive">
+            <Angry/>
+  <AlertTitle>Register Message</AlertTitle>
+  <AlertDescription>
+    Register Fails!
+  </AlertDescription>
+</Alert>
+        </div>
 				<form onSubmit={handleSubmit(registerSubmit)}>
 					<div className="grid w-full max-w-sm items-center gap-3">
 						<Label htmlFor="email">Email</Label>
@@ -95,7 +106,7 @@ const Register = () => {
 					</div>
 
 					<div className="grid w-full max-w-sm items-center gap-3">
-						<Button>Register</Button>
+						<Button className="bg-blue-600 hover:bg-blue-800 hover:text-2xl">Register</Button>
 					</div>
 				</form>
 			</CardContent>
