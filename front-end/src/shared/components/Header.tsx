@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Header = ()=>{
-    return (<div className="text-center m-10">
+    return (<div className="text-center m-10 space-x-5">
         <Link to={"/"} className="hover:text-blue-500">Home</Link>
         &nbsp;
         <Link to={"/login"} className="hover:text-blue-500">Login</Link>
