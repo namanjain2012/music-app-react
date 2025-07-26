@@ -15,8 +15,10 @@ import { doRegister } from "../api/user-api";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Angry } from 'lucide-react';
+import { useState } from "react";
  
 const Register = () => {
+	const [status,setStatus] = useState();
 	const navigate = useNavigate();
 	const {
 		register,
