@@ -14,11 +14,11 @@ import { registerSchema } from "../validations/register-validation";
 import { doRegister } from "../api/user-api";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Angry } from 'lucide-react';
+import { Angry } from "lucide-react";
 import { useState } from "react";
- 
+
 const Register = () => {
-	const [status,setStatus] = useState();
+	const [status, setStatus] = useState();
 	const navigate = useNavigate();
 	const {
 		register,
@@ -32,17 +32,27 @@ const Register = () => {
 			name: "",
 		},
 	});
+	const alertJSX = (
+		<div>
+			<Alert variant="destructive">
+				<Angry />
+				<AlertTitle>Register Message</AlertTitle>
+				<AlertDescription>Register Fails!</AlertDescription>
+			</Alert>
+		</div>
+	);
 	const registerSubmit = async (userData: unknown) => {
 		console.log("Form Submit : ", userData);
 		try {
 			const result = await doRegister(userData);
-			if(result.data.id){
-        navigate("/login");
-      }
-      else{
-        console.log("Unable to register");
-      }
-      console.log("Result is : ",result);
+			if (result.data.id) {
+				setStatus(false);
+				navigate("/login");
+			} else {
+				console.log("Unable to register");
+				setStatus(true);
+			}
+			console.log("Result is : ", result);
 		} catch (err) {
 			console.log("Register failed", err);
 		}
@@ -58,15 +68,7 @@ const Register = () => {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-        <div>
-          <Alert variant="destructive">
-            <Angry/>
-  <AlertTitle>Register Message</AlertTitle>
-  <AlertDescription>
-    Register Fails!
-  </AlertDescription>
-</Alert>
-        </div>
+				{status && alertJSX}
 				<form onSubmit={handleSubmit(registerSubmit)}>
 					<div className="grid w-full max-w-sm items-center gap-3">
 						<Label htmlFor="email">Email</Label>
@@ -108,7 +110,9 @@ const Register = () => {
 					</div>
 
 					<div className="grid w-full max-w-sm items-center gap-3">
-						<Button className="bg-blue-600 hover:bg-blue-800 hover:text-2xl">Register</Button>
+						<Button className="bg-blue-600 hover:bg-blue-800 hover:text-2xl">
+							Register
+						</Button>
 					</div>
 				</form>
 			</CardContent>

@@ -1,0 +1,27 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "this is for music api",
+  "keywords": [
+    "music",
+    "api"
+  ],
+  "homepage": "https://github.com/namanjain2012/music-app-react#readme",
+  "bugs": {
+    "url": "https://github.com/namanjain2012/music-app-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namanjain2012/music-app-react.git"
+  },
+  "license": "ISC",
+  "author": "Naman Jain",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
