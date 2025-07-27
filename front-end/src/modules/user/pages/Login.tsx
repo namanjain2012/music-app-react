@@ -4,17 +4,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 
 const Login = ()=>{
-    return (<Card className="w-full max-w-md mx-auto">
+    return (<Card className="w-full max-w-md mx-auto bg-green-300">
         <CardHeader>
-            <CardTitle className="space-y-1 text-center">Login Here</CardTitle>
+            <CardTitle className="space-y-1 text-center text-2xl">Login Here</CardTitle>
             <CardDescription className="text-center">Music App Login Form</CardDescription>
         </CardHeader>
         <CardContent>
             <div className="grid w-full max-w-sm items-center gap-3">
                 <Label htmlFor="email">Email</Label>
-                <Input type="email" id="email" placeholder="Email" />
+                <Input type="email" id="email" placeholder="Email" className="border-black"/>
                 <Label htmlFor="password">Password</Label>
-                <Input type="password" id="password" placeholder="Password" />
+                <Input type="password" id="password" placeholder="Password" className="border-black"/>
                 <Button className="bg-blue-600 hover:bg-blue-800 hover:text-2xl">Login</Button>
                 </div>
         </CardContent>

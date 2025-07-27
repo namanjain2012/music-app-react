@@ -58,9 +58,9 @@ const Register = () => {
 		}
 	};
 	return (
-		<Card className="w-full max-w-md mx-auto">
+		<Card className="w-full max-w-md mx-auto bg-green-300">
 			<CardHeader>
-				<CardTitle className="space-y-1 text-center">
+				<CardTitle className="space-y-1 text-center text-2xl">
 					Register Here
 				</CardTitle>
 				<CardDescription className="text-center">
@@ -72,11 +72,11 @@ const Register = () => {
 				<form onSubmit={handleSubmit(registerSubmit)}>
 					<div className="grid w-full max-w-sm items-center gap-3">
 						<Label htmlFor="email">Email</Label>
-						<Input
+						<Input className="border-black"
 							{...register("email")}
 							type="email"
 							id="email"
-							placeholder="Email"
+							placeholder="abc@example.com"
 						/>
 						<span className="text-red-500">
 							{errors.email && errors.email.message}
@@ -85,11 +85,11 @@ const Register = () => {
 
 					<div className="grid w-full max-w-sm items-center gap-3">
 						<Label htmlFor="password">Password</Label>
-						<Input
+						<Input className="border-black"
 							{...register("password")}
 							type="password"
 							id="password"
-							placeholder="Password"
+							placeholder="Example@123"
 						/>
 						<span className="text-red-500">
 							{errors.password && errors.password.message}
@@ -98,11 +98,11 @@ const Register = () => {
 
 					<div className="grid w-full max-w-sm items-center gap-3">
 						<Label htmlFor="name">Name</Label>
-						<Input
+						<Input className="border-black"
 							{...register("name")}
 							type="text"
 							id="name"
-							placeholder="name"
+							placeholder="Naman"
 						/>
 						<span className="text-red-500">
 							{errors.name && errors.name.message}
