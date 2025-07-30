@@ -1,17 +1,10 @@
 import express from 'express';
+import { addSong, getAllSongs, searchSong, updateSong } from '../../../controllers/music-controller.js';
+
 const router = express.Router();
-router.get('/all-songs',(req,res)=>{
-    res.send("All songs");
-});
-router.get('/search-songs',(req,res)=>{
-    res.send("Searching Song...");
-    
-});
-router.post('/add-song',(req,res)=>{
-    res.send("Song added");
-});
-router.post('/update-song',(req,res)=>{
-    res.send("Song updated");
-});
+router.get('/all-songs',getAllSongs);
+router.get('/search-songs',searchSong);
+router.post('/add-song',addSong);
+router.post('/update-song',updateSong);
 
 export default router;
