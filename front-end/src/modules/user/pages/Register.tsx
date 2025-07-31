@@ -45,7 +45,7 @@ const Register = () => {
 		console.log("Form Submit : ", userData);
 		try {
 			const result = await doRegister(userData);
-			if (result.data.id) {
+			if (result.data.message) {
 				setStatus(false);
 				navigate("/login");
 			} else {

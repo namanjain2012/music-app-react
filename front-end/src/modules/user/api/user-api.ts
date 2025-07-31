@@ -5,5 +5,5 @@ axios.defaults.baseURL = API_BASE_URL;
 
 export const doRegister = (userData:unknown)=>{
     console.log("API BASE URL : ",API_BASE_URL," User data is : ",userData);
-    return axios.post('users',{data:userData});
+    return axios.post('register',{data:userData});
 }
