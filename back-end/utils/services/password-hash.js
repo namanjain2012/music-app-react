@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 export const encryptPassword = (plainPassword)=>{
-    return bcrypt.hashSync(plainPassword,process.env.SALT);
+    return bcrypt.hashSync(plainPassword,parseInt(process.env.SALT));
 }
 
 export const compareHash = (plainPassword,dbPassword)=>{

@@ -16,9 +16,11 @@ import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Angry } from "lucide-react";
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 const Register = () => {
-	const [status, setStatus] = useState();
+	const [status, setStatus] = useState(false);
+	const [message,setMessage] = useState('');
 	const navigate = useNavigate();
 	const {
 		register,
@@ -29,7 +31,7 @@ const Register = () => {
 		defaultValues: {
 			email: "",
 			password: "",
-			name: "",
+			name: ""
 		},
 	});
 	const alertJSX = (
@@ -37,7 +39,7 @@ const Register = () => {
 			<Alert variant="destructive">
 				<Angry />
 				<AlertTitle>Register Message</AlertTitle>
-				<AlertDescription>Register Fails!</AlertDescription>
+				<AlertDescription>{message}</AlertDescription>
 			</Alert>
 		</div>
 	);
@@ -49,12 +51,21 @@ const Register = () => {
 				setStatus(false);
 				navigate("/login");
 			} else {
-				console.log("Unable to register");
 				setStatus(true);
+				setMessage("Unable to register");
 			}
 			console.log("Result is : ", result);
-		} catch (err) {
-			console.log("Register failed", err);
+		} catch (err:unknown) {
+			if(err instanceof AxiosError){
+				setStatus(true);
+				setMessage(err.response?.data?.message);
+				console.log("Register failed", err);
+			}
+			else{
+				setStatus(true);
+				setMessage("An unknown error");
+				console.log("Register failed", err);
+			}
 		}
 	};
 	return (
