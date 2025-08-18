@@ -3,7 +3,6 @@ export const login = async (req,res)=>{
     const userObject = req.body;
     try{
         const obj = await loginUser(userObject);
-        console.log(message);
         res.status(200).json(obj);
     }
     catch(err){

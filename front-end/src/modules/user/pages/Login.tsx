@@ -12,8 +12,7 @@ import { Label } from "@radix-ui/react-label";
 import { loginSchema } from "../validations/register-validation";
 import { useForm } from "react-hook-form";
 import { doLogin } from "../api/user-api";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Angry } from "lucide-react";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useState } from "react";
 
 const Login = () => {
@@ -33,7 +32,6 @@ const Login = () => {
 		<div>
 			<Alert variant="default">
 				<AlertTitle>{message}</AlertTitle>
-				{/* <AlertDescription>{message}</AlertDescription> */}
 			</Alert>
 		</div>
 	);
@@ -41,11 +39,13 @@ const Login = () => {
 		try {
 			const result = await doLogin(userObject);
 			if (result.data.message) {
+				localStorage.role = result.data.role;
 				console.log(result.data.message);
+				setMessage(result.data.message);
 			} else {
 				console.log("Login Fail");
+				setMessage(result.data.message);
 			}
-			setMessage(result.data.message);
 		} catch (err) {
 			console.log("Login fail : ", err);
 		}
